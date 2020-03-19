@@ -1,0 +1,31 @@
+
+<form [formGroup]="myReactiveForm" (submit)="printInConsole()">
+<h3 class="first">User Registration Form</h3>
+
+    <div class="ui-inputgroup">
+      <span class="ui-inputgroup-addon"><i class="pi pi-user" style="line-height: 1.25;"></i></span>
+      <input type="text" pInputText placeholder="Username" formControlName="userName">
+        <div class="error" *ngIf="isControlInvalid('userName')">
+          Имя не может быть пустым и содержать цифры
+        </div>
+    </div>
+
+    <div class="ui-inputgroup">
+      <span class="ui-inputgroup-addon">@</span>
+      <input type="text" pInputText placeholder="Email" formControlName="userEmail">
+      <div class="error" *ngIf="isControlInvalid('userEmail')">
+        Электронный адрес не может быть пустым
+      </div>
+    </div>
+
+    <div class="ui-inputgroup">
+      <span class="ui-inputgroup-addon"><i class="pi pi-key" style="line-height: 1.25;"></i></span>
+      <input type="password" pInputText placeholder="Password" pPassword [(ngModel)]="property" formControlName="userPassword"/>
+      <div class="error" *ngIf="isControlInvalid('userPassword')">
+        Пароль должен содержать только латинские буквы и его длина не должна превышать 20 символов
+      </div>
+    </div>
+
+<button type="submit" class="btn btn-info" (click)= "printInConsole()">Register</button>
+</form>
+
