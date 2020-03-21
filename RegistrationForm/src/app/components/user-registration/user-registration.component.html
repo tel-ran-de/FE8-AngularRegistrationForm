@@ -13,17 +13,28 @@
     <div class="ui-inputgroup">
       <span class="ui-inputgroup-addon">@</span>
       <input type="text" pInputText placeholder="Email" formControlName="userEmail">
-      <div class="error" *ngIf="isControlInvalid('userEmail')">
+    </div>
+    <div class="error" *ngIf="isControlInvalid('userEmail')">
+      <div *ngIf="myReactiveForm.get('userEmail').errors['required']">
         Электронный адрес не может быть пустым
+      </div>
+      <div *ngIf="myReactiveForm.get('userEmail').errors['email']">
+        Некорректный адрес электронной почты
       </div>
     </div>
 
     <div class="ui-inputgroup">
       <span class="ui-inputgroup-addon"><i class="pi pi-key" style="line-height: 1.25;"></i></span>
       <input type="password" pInputText pPassword [weakLabel]="weakPasswordText" formControlName="userPassword"/>
-      <div class="error" *ngIf="isControlInvalid('userPassword')">
-        Пароль должен содержать только латинские буквы и его длина не должна превышать 20 символов
+    </div>
+    <div class="error" *ngIf="isControlInvalid('userPassword')">
+      <div *ngIf="myReactiveForm.get('userPassword').errors['required']">
+        Поле не может быть пустым
       </div>
+      <div *ngIf="myReactiveForm.get('userPassword').errors['minlength']">
+        Минимальная длина пароля 8 символов
+      </div>
+      {{ myReactiveForm.get('userPassword').errors | json }}
     </div>
 
 <button type="submit" class="btn btn-info">Register</button>

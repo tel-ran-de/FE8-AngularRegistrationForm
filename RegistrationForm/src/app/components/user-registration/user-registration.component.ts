@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder, FormControl, Validators} from '@angular/forms';
 import {PrintToConsoleService} from "../../services/print-to-console/print-to-console.service";
+import {AppValidators} from "../../validators/app-validators";
 
 @Component({
   selector: 'app-user-registration',
@@ -21,12 +22,12 @@ export class UserRegistrationComponent implements OnInit {
 
   initForm() {
     this.myReactiveForm = this.fb.group({
-      userName: new FormControl('Username', Validators.required),
-      userEmail: new FormControl('Email', [
-        Validators.required,
-        Validators.email
-      ]),
-      userPassword: new FormControl('Password', Validators.required)
+      userName: ['', [Validators.required,
+        AppValidators.notVasya,
+        AppValidators.notName('petya')]
+      ],
+      userEmail: ['', [Validators.required, Validators.email]],
+      userPassword: ['', [Validators.required, Validators.minLength(8)]]
     });
   }
 
