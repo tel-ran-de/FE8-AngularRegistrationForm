@@ -1,5 +1,5 @@
 
-<form [formGroup]="myReactiveForm" (submit)="printInConsole()">
+<form [formGroup]="myReactiveForm" (submit)="onSubmit()">
 <h3 class="first">User Registration Form</h3>
 
     <div class="ui-inputgroup">
@@ -20,12 +20,12 @@
 
     <div class="ui-inputgroup">
       <span class="ui-inputgroup-addon"><i class="pi pi-key" style="line-height: 1.25;"></i></span>
-      <input type="password" pInputText placeholder="Password" pPassword [(ngModel)]="property" formControlName="userPassword"/>
+      <input type="password" pInputText pPassword [weakLabel]="weakPasswordText" formControlName="userPassword"/>
       <div class="error" *ngIf="isControlInvalid('userPassword')">
         Пароль должен содержать только латинские буквы и его длина не должна превышать 20 символов
       </div>
     </div>
 
-<button type="submit" class="btn btn-info" (click)= "printInConsole()">Register</button>
+<button type="submit" class="btn btn-info">Register</button>
 </form>
 

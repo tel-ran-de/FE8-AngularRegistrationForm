@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder, FormControl, Validators} from '@angular/forms';
+import {PrintToConsoleService} from "../../services/print-to-console/print-to-console.service";
 
 @Component({
   selector: 'app-user-registration',
@@ -9,9 +10,10 @@ import {FormGroup, FormBuilder, FormControl, Validators} from '@angular/forms';
 export class UserRegistrationComponent implements OnInit {
 
   myReactiveForm: FormGroup;
-  property: 'promptLabel';
+  weakPasswordText = "Слабый пароль";
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+              private printToConsoleService: PrintToConsoleService) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -36,13 +38,13 @@ export class UserRegistrationComponent implements OnInit {
     return result;
   }
 
-  printInConsole() {
+  onSubmit() {
     const controls = this.myReactiveForm.controls;
 
     if (this.myReactiveForm.invalid) {
       Object.keys(controls).forEach(controlName => controls[controlName].markAsTouched());
       return;
     }
-    console.log(this.myReactiveForm.value);
+    this.printToConsoleService.printRegistrationForm(this.myReactiveForm.value);
   }
 }
