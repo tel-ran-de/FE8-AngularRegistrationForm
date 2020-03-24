@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, FormBuilder, FormControl, Validators} from '@angular/forms';
-import {PrintToConsoleService} from "../../services/print-to-console/print-to-console.service";
-import {AppValidators} from "../../validators/app-validators";
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { PrintToConsoleService } from "../../services/print-to-console/print-to-console.service";
+import { AppValidators } from "../../validators/app-validators";
+import {TranslationsService} from "../../services/translations.service";
 
 @Component({
   selector: 'app-user-registration',
@@ -14,7 +15,8 @@ export class UserRegistrationComponent implements OnInit {
   weakPasswordText = "Слабый пароль";
 
   constructor(private fb: FormBuilder,
-              private printToConsoleService: PrintToConsoleService) { }
+              private printToConsoleService: PrintToConsoleService,
+              private translationsService: TranslationsService) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -47,5 +49,9 @@ export class UserRegistrationComponent implements OnInit {
       return;
     }
     this.printToConsoleService.printRegistrationForm(this.myReactiveForm.value);
+  }
+
+  getTranslation(key: string) {
+    return this.translationsService.getTranslation(key);
   }
 }
