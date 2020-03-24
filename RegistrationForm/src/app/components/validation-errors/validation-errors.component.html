@@ -1,0 +1,12 @@
+<div class="error invalid-feedback" *ngIf="isControlInvalid()">
+  <div *ngIf="control.errors['required']">
+    Имя не может быть пустым и содержать цифры
+  </div>
+  <div *ngIf="control.errors['email']">
+    Некорректный адрес электронной почты
+  </div>
+  <div *ngIf="control.errors['minlength']">
+    Минимальная длина пароля 8 символов
+  </div>
+</div>
+
