@@ -10,12 +10,20 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { PasswordModule } from 'primeng/password';
 import { ValidationErrorsComponent } from './components/validation-errors/validation-errors.component';
+import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
+import { TranslateHttpLoader} from "@ngx-translate/http-loader";
+import { HttpClientModule, HttpClient } from "@angular/common/http";
+import {TranslateComponent} from "./components/translate/translate.component";
 
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 @NgModule({
   declarations: [
     AppComponent,
     UserRegistrationComponent,
-    ValidationErrorsComponent
+    ValidationErrorsComponent,
+    TranslateComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +32,15 @@ import { ValidationErrorsComponent } from './components/validation-errors/valida
     InputTextModule,
     ButtonModule,
     FormsModule,
-    PasswordModule
+    PasswordModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateModule,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
