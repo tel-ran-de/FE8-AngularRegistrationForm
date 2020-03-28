@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import {EventEmitter, Injectable, OnInit} from '@angular/core';
+import {Observable, of} from "rxjs";
 
 const translations = {
   ru: {
@@ -6,14 +7,18 @@ const translations = {
     email: 'Некорректный адрес электронной почты',
     required: 'Поле не может быть пустым',
     notvasya: "Имя не может быть Вася",
-    user_registration_form: 'Форма регистрации нового пользователя'
+    user_registration_form: 'Форма регистрации нового пользователя',
+    en: 'англ.',
+    ru: 'рус.'
   },
   en: {
     minlength: 'Min length must be 8 symbols',
     email: 'Incorrect email address',
     required: 'Field can not be empty',
     notvasya: "Vasya is not allowed",
-    user_registration_form: 'User registration form'
+    user_registration_form: 'User registration form',
+    ru: 'rus',
+    en: 'eng'
   }
 };
 
@@ -22,13 +27,18 @@ const translations = {
 })
 export class TranslationsService {
 
-  private currentLanguage = 'ru';
+  private currentLanguage: string = 'ru';
 
-  constructor() { }
+  languageChangeEventEmitter = new EventEmitter<string>();
 
   setCurrentLanguage(lang: string) {
     this.currentLanguage = lang;
-    console.log(this.currentLanguage);
+    this.languageChangeEventEmitter.emit(lang);
+    console.log(this.currentLanguage)
+  }
+
+  getCurrentLanguage() {
+    return this.currentLanguage;
   }
 
   getTranslation(key: string) {

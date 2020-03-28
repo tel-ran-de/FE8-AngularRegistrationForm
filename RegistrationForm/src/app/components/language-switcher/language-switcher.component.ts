@@ -16,4 +16,8 @@ export class LanguageSwitcherComponent implements OnInit {
   setLang(lang: string) {
     this.translationsService.setCurrentLanguage(lang);
   }
+
+  getTranslation(lang: string) {
+    return this.translationsService.getTranslation(lang);
+  }
 }

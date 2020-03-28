@@ -1,5 +1,7 @@
 <form [formGroup]="myReactiveForm" (submit)="onSubmit()">
-  <h3 class="first">FormGroup</h3>
+  <h3 class="first">{{getTranslation('user_registration_form')}}</h3>
+
+  <div *ngIf="lang == 'ru'">Вы находитесь на территории России, опасайтест РосКомНадзора</div>
 
   <div class="form-group">
     <input type="text" pInputText placeholder="Control" formControlName="userName" class="form-control"><button type="button" (click)="toggle($event)">toggle</button>

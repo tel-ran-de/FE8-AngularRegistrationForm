@@ -13,12 +13,17 @@ export class UserRegistrationComponent implements OnInit {
 
   myReactiveForm: FormGroup;
   weakPasswordText = "Слабый пароль";
+  lang: string;
 
   constructor(private fb: FormBuilder,
               private printToConsoleService: PrintToConsoleService,
               private translationsService: TranslationsService) { }
 
   ngOnInit(): void {
+    this.lang = this.translationsService.getCurrentLanguage();
+    this.translationsService.languageChangeEventEmitter.subscribe(lang => {
+      this.lang = lang;
+    });
     this.initForm();
   }
 
