@@ -1,0 +1,7 @@
+{
+  "Sitetitle": "User registration form",
+  "Name": "Name",
+  "NameError": "Min simbol is 8!",
+  "Email": "Email",
+  "Password": "Password"
+}
