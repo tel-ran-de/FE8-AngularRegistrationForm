@@ -3,6 +3,7 @@ import {Observable, of} from "rxjs";
 
 const translations = {
   ru: {
+    'dummy works!': 'Просто компонет работает',
     minlength: 'Минимальная длина 8 символов',
     email: 'Некорректный адрес электронной почты',
     required: 'Поле не может быть пустым',
@@ -12,6 +13,7 @@ const translations = {
     ru: 'рус.'
   },
   en: {
+    'dummy works!': 'Dummy componet works',
     minlength: 'Min length must be 8 symbols',
     email: 'Incorrect email address',
     required: 'Field can not be empty',

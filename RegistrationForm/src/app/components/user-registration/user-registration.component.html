@@ -1,5 +1,5 @@
 <form [formGroup]="myReactiveForm" (submit)="onSubmit()">
-  <h3 class="first">{{getTranslation('user_registration_form')}}</h3>
+  <h3 class="first" appTrans>user_registration_form</h3>
 
   <div *ngIf="lang == 'ru'">Вы находитесь на территории России, опасайтест РосКомНадзора</div>
 

@@ -11,13 +11,17 @@ import { ButtonModule } from 'primeng/button';
 import { PasswordModule } from 'primeng/password';
 import { ValidationErrorsComponent } from './components/validation-errors/validation-errors.component';
 import { LanguageSwitcherComponent } from './components/language-switcher/language-switcher.component';
+import { TransDirective } from './directives/trans.directive';
+import { DummyComponent } from './components/dummy/dummy.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserRegistrationComponent,
     ValidationErrorsComponent,
-    LanguageSwitcherComponent
+    LanguageSwitcherComponent,
+    TransDirective,
+    DummyComponent
   ],
   imports: [
     BrowserModule,
