@@ -22,11 +22,16 @@ const translations = {
 })
 export class TranslationsService {
 
-  lang = 'ru';
+  private currentLanguage = 'ru';
 
   constructor() { }
 
+  setCurrentLanguage(lang: string) {
+    this.currentLanguage = lang;
+    console.log(this.currentLanguage);
+  }
+
   getTranslation(key: string) {
-    return translations[this.lang][key];
+    return translations[this.currentLanguage][key];
   }
 }

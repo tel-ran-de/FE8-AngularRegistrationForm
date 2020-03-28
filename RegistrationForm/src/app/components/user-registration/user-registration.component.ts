@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {FormGroup, FormBuilder, Validators, AbstractControl} from '@angular/forms';
 import { PrintToConsoleService } from "../../services/print-to-console/print-to-console.service";
 import { AppValidators } from "../../validators/app-validators";
 import {TranslationsService} from "../../services/translations.service";
@@ -24,21 +24,14 @@ export class UserRegistrationComponent implements OnInit {
 
   initForm() {
     this.myReactiveForm = this.fb.group({
-      userName: ['', [Validators.required,
-        AppValidators.notVasya,
-        AppValidators.notName('petya')]
-      ],
+      userName: ['', [Validators.required, AppValidators.notVasya, AppValidators.notName('petya')]],
       userEmail: ['', [Validators.required, Validators.email]],
       userPassword: ['', [Validators.required, Validators.minLength(8)]]
     });
   }
 
-  isControlInvalid(controlName: string): boolean {
-    const control = this.myReactiveForm.controls[controlName];
-
-    const result = control.invalid && control.touched;
-
-    return result;
+  getControl(controlName: string): AbstractControl {
+    return this.myReactiveForm.get(controlName);
   }
 
   onSubmit() {
@@ -53,5 +46,13 @@ export class UserRegistrationComponent implements OnInit {
 
   getTranslation(key: string) {
     return this.translationsService.getTranslation(key);
+  }
+
+  toggle($event) {
+    console.log($event);
+    if (this.getControl('userName').disabled) {
+      this.getControl('userName').enable();
+    } else
+      this.getControl('userName').disable();
   }
 }

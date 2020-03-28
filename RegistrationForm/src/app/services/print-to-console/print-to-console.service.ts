@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { RegistrationDateModel } from "../../model/RegistrationDataModel";
+import { RegistrationDataModel } from "../../model/RegistrationDataModel";
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class PrintToConsoleService {
     console.log(value);
   }
 
-  printRegistrationForm(value: RegistrationDateModel) {
+  printRegistrationForm(value: RegistrationDataModel) {
     console.log(value);
   }
 }

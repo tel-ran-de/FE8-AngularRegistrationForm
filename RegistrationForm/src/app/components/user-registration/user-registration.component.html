@@ -1,14 +1,23 @@
-
 <form [formGroup]="myReactiveForm" (submit)="onSubmit()">
-  <h3 class="first">{{getTranslation('user_registration_form')}}</h3>
+  <h3 class="first">FormGroup</h3>
 
   <div class="form-group">
-    <input type="text" pInputText placeholder="Username" formControlName="userName" class="form-control">
+    <input type="text" pInputText placeholder="Control" formControlName="userName" class="form-control"><button type="button" (click)="toggle($event)">toggle</button>
+    <div>FormControl name: userName</div>
+    <div>Value: {{ getControl('userName').value }}</div>
+    <div>Errors: {{ getControl('userName').errors | json}}</div>
+    <div>Invalid: {{ getControl('userName').invalid | json}}</div>
+    <div>Valid: {{ getControl('userName').valid | json}}</div>
+    <div>Dirty: {{ getControl('userName').dirty | json}}</div>
+    <div>Pristine: {{ getControl('userName').pristine | json}}</div>
+    <div>Disabled: {{ getControl('userName').disabled | json}}</div>
+    <div>Enabled: {{ getControl('userName').enabled | json}}</div>
+    <div>Touched: {{ getControl('userName').touched | json}}</div>
     <app-validation-errors [control]="myReactiveForm.get('userName')"></app-validation-errors>
   </div>
 
   <div class="form-group">
-    <input type="text" pInputText placeholder="Email" formControlName="userEmail" class="form-control">
+    <input type="text" pInputText placeholder="Control" formControlName="userEmail" class="form-control">
     <app-validation-errors [control]="myReactiveForm.get('userEmail')"></app-validation-errors>
   </div>
 
@@ -20,7 +29,7 @@
       [weakLabel]="weakPasswordText"
       formControlName="userPassword"
       class="form-control"
-      placeholder="password">
+      placeholder="Control">
     <app-validation-errors [control]="myReactiveForm.get('userPassword')"></app-validation-errors>
   </div>
 

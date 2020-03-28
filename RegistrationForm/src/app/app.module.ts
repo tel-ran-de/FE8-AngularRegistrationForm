@@ -10,12 +10,14 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { PasswordModule } from 'primeng/password';
 import { ValidationErrorsComponent } from './components/validation-errors/validation-errors.component';
+import { LanguageSwitcherComponent } from './components/language-switcher/language-switcher.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserRegistrationComponent,
-    ValidationErrorsComponent
+    ValidationErrorsComponent,
+    LanguageSwitcherComponent
   ],
   imports: [
     BrowserModule,
